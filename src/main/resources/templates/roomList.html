@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Room List</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+<h1>Room List</h1>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Room Number</th>
+        <th>Type</th>
+        <th>Price</th>
+        <th>Hotel</th>
+    </tr>
+    <tr th:each="room : ${rooms}">
+        <td th:text="${room.id}"></td>
+        <td th:text="${room.roomNumber}"></td>
+        <td th:text="${room.roomType}"></td>
+        <td th:text="${room.price}"></td>
+        <td th:text="${room.hotel != null ? room.hotel.name : ''}"></td>
+    </tr>
+</table>
+</body>
+</html>

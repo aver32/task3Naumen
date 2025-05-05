@@ -2,9 +2,11 @@ package ru.otstavnov_michail.NauJava.repository;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import ru.otstavnov_michail.NauJava.modeldb.Room;
 import java.util.List;
 
+@RepositoryRestResource(path = "rooms")
 public interface RoomRepository extends CrudRepository<Room, Integer> {
     // Метод поиска комнат по типу и цене меньше или равной указанной
     List<Room> findByRoomTypeAndPriceLessThanEqual(String roomType, Double maxPrice);
