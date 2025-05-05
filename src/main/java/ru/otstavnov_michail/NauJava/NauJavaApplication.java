@@ -10,9 +10,11 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class NauJavaApplication {
+    //task_8
 
     public static void main(String[] args) {
         SpringApplication.run(NauJavaApplication.class, args);
     }
+
 
 }
