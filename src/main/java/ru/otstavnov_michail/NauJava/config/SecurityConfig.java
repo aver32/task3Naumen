@@ -35,6 +35,8 @@ public class SecurityConfig {
                                 "/webjars/**"
                         ).hasRole("ADMIN")
 
+                        .requestMatchers("/api/reports/**").permitAll()
+
                         // API эндпоинты
                         .requestMatchers("/api/public/**").permitAll()
                         .requestMatchers("/api/user/**").hasAnyRole("USER", "ADMIN")
@@ -59,6 +61,9 @@ public class SecurityConfig {
                 )
                 .exceptionHandling(exception -> exception
                         .accessDeniedPage("/access-denied")
+                )
+                .csrf(csrf -> csrf
+                        .ignoringRequestMatchers("/api/reports/**")
                 );
 
         return http.build();

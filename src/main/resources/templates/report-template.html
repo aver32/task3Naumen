@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Отчет о работе системы</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .report-header { background-color: #4CAF50; color: white; padding: 10px; }
+        .time-info { margin: 20px 0; }
+    </style>
+</head>
+<body>
+<div class="report-header">
+    <h1>Отчет о работе системы</h1>
+</div>
+
+<h2>Статистика пользователей</h2>
+<p>Количество зарегистрированных пользователей: <span th:text="${userCount}"></span></p>
+
+<h2>Список пользователей</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Имя пользователя</th>
+        <th>ФИО</th>
+        <th>Email</th>
+        <th>Телефон</th>
+        <th>Роль</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.name} ?: ''"></td>
+        <td th:text="${user.email} ?: ''"></td>
+        <td th:text="${user.phoneNumber} ?: ''"></td>
+        <td th:text="${user.role}"></td>
+    </tr>
+</table>
+
+<h2>Список гостей</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>ФИО</th>
+        <th>Email</th>
+        <th>Телефон</th>
+    </tr>
+    <tr th:each="guest : ${guests}">
+        <td th:text="${guest.id}"></td>
+        <td th:text="${guest.name} ?: ''"></td>
+        <td th:text="${guest.email} ?: ''"></td>
+        <td th:text="${guest.phoneNumber} ?: ''"></td>
+    </tr>
+</table>
+
+<div class="time-info">
+    <h2>Информация о времени выполнения</h2>
+    <p>Время, затраченное на подсчет пользователей: <span th:text="${userCountTime}"></span> мс</p>
+    <p>Время, затраченное на получение списка пользователей и гостей: <span th:text="${entitiesListTime}"></span> мс</p>
+    <p>Общее время формирования отчета: <span th:text="${totalElapsed}"></span> мс</p>
+</div>
+</body>
+</html>
