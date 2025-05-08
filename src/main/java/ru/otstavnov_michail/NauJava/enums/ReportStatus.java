@@ -1,9 +1,9 @@
-package ru.otstavnov_michail.NauJava.modeldb;
+package ru.otstavnov_michail.NauJava.enums;
 
 public enum ReportStatus {
     CREATED("Создан"),
     COMPLETED("Завершен"),
-    FAILED("Ошибка");
+    ERROR("Ошибка");
 
     private final String displayName;
 

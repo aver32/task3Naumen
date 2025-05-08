@@ -3,6 +3,7 @@ package ru.otstavnov_michail.NauJava.modeldb;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import ru.otstavnov_michail.NauJava.enums.ReportStatus;
 
 import java.time.LocalDateTime;
 
@@ -39,5 +40,25 @@ public class Report {
     @PreUpdate
     protected void onUpdate() {
         updatedAt = LocalDateTime.now();
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public ReportStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ReportStatus status) {
+        this.status = status;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
